@@ -12,6 +12,7 @@ import org.slf4j.Logger;
 
 import java.io.*;
 import java.nio.charset.StandardCharsets;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -105,6 +106,7 @@ public class InformationQueryHandler implements HttpHandler {
 
     @Override
     public void handle(HttpExchange exchange) throws IOException {
+        getLogger().info("Connection in：{}", exchange.getRequestURI());
 
         exchange.getRequestMethod();
 
@@ -123,13 +125,29 @@ public class InformationQueryHandler implements HttpHandler {
 
                     Headers responseHeaders = exchange.getResponseHeaders();
                     responseHeaders.set("Content-Type", "plain/text; charset=utf-8");
+                    setTheFuckingCorsHeaders(responseHeaders);
+
                     exchange.sendResponseHeaders(200, file.length());
                     try (
                             InputStream inputStream = new FileInputStream(file);
                             OutputStream outputStream = exchange.getResponseBody()
                     ) {
                         inputStream.transferTo(outputStream);
+//                        byte[] buffer = new byte[1024];
+//                        int read;
+//                        while ((read = inputStream.read(buffer, 0, 1024)) >= 0) {
+//                            getLogger().info("Data: {} byte(s), {}", read, new String(Arrays.copyOfRange(buffer, 0, read)));
+//                            outputStream.write(Arrays.copyOfRange(buffer, 0, read), 0, read);
+//                            outputStream.write(("!".repeat(read).getBytes(StandardCharsets.UTF_8)), 0, read);
+////                            outputStream.write(new String(Arrays.copyOfRange(buffer, 0, read)).getBytes(StandardCharsets.UTF_8));
+//                        }
                     }
+//                    exchange.sendResponseHeaders(200, 3);
+//                    try (
+//                            OutputStream outputStream = exchange.getResponseBody()
+//                    ) {
+//                        outputStream.write("123".getBytes(StandardCharsets.UTF_8));
+//                    }
                     getLogger().info("transformation finished: {}", path);
                 }
                 case ACTION_GET_INFORMATION -> response(exchange, new JsonResponseBody(Storages.readInformation(new File(path))));
@@ -155,21 +173,25 @@ public class InformationQueryHandler implements HttpHandler {
 
     protected void response(HttpExchange exchange, @NotNull JsonResponseBody jsonResponseBody) throws IOException {
         String responseBodyString = jsonResponseBody.toJsonObject().toJSONString();
-        getLogger().info("response: {}", responseBodyString.substring(0, 64));
+        getLogger().info("response: {}", responseBodyString.substring(0, Math.min(64, responseBodyString.length())));
         byte[] responseBodyBytes = responseBodyString.getBytes(StandardCharsets.UTF_8);
 
         Headers responseHeaders = exchange.getResponseHeaders();
         responseHeaders.set("Content-Type", "application/json; charset=utf-8");
-        responseHeaders.set("Access-Control-Allow-Origin", "*");
-        responseHeaders.set("Access-Control-Allow-Methods", "*");
-        responseHeaders.set("Access-Control-Max-Age", "3600");
-        responseHeaders.set("Access-Control-Allow-Headers", "*");
-        responseHeaders.set("Access-Control-Allow-Credentials", "true");
+        setTheFuckingCorsHeaders(responseHeaders);
 
         exchange.sendResponseHeaders(200, responseBodyBytes.length);
         try (OutputStream outputStream = exchange.getResponseBody()) {
             outputStream.write(responseBodyBytes);
         }
+    }
+
+    public static void setTheFuckingCorsHeaders(Headers headers) {
+        headers.set("Access-Control-Allow-Origin", "*");
+        headers.set("Access-Control-Allow-Methods", "*");
+        headers.set("Access-Control-Max-Age", "3600");
+        headers.set("Access-Control-Allow-Headers", "*");
+        headers.set("Access-Control-Allow-Credentials", "true");
     }
 
 }
