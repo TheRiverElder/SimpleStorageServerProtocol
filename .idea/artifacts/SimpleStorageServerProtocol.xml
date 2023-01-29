@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="SimpleStorageServerProtocol">
+    <output-path>$PROJECT_DIR$/out/artifacts/SimpleStorageServerProtocol</output-path>
+    <root id="archive" name="SimpleStorageServerProtocol.jar">
+      <element id="module-output" name="SimpleStorageServerProtocol" />
+    </root>
+  </artifact>
+</component>

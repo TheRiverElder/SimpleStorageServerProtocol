@@ -55,10 +55,15 @@ public class Storages {
     }
 
     public static boolean add(File file, InputStream inputStream) throws IllegalArgumentException, IOException {
-        File parent = file.getParentFile();
-        if (!parent.exists()) {
-            if (parent.mkdirs()) return false;
-        } else if (!parent.isDirectory()) throw new IllegalArgumentException("Is not a directory: " + file.getAbsolutePath());
+        if (file.exists()) {
+            if (!file.isFile()) throw new IllegalArgumentException("Is not a file: " + file.getAbsolutePath());
+        } else {
+            File parent = file.getParentFile();
+            if (!parent.exists()) {
+                if (parent.mkdirs()) throw new IllegalArgumentException("Cannot create parent directory: " + parent.getAbsolutePath());
+            }
+            if (!parent.isDirectory()) throw new IllegalArgumentException("Is not a directory: " + parent.getAbsolutePath());
+        }
 
         try (inputStream; FileOutputStream fileOutputStream = new FileOutputStream(file)) {
             inputStream.transferTo(fileOutputStream);

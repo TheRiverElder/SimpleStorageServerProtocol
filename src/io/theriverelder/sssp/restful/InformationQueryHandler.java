@@ -160,6 +160,11 @@ public class InformationQueryHandler implements HttpHandler {
 
         Headers responseHeaders = exchange.getResponseHeaders();
         responseHeaders.set("Content-Type", "application/json; charset=utf-8");
+        responseHeaders.set("Access-Control-Allow-Origin", "*");
+        responseHeaders.set("Access-Control-Allow-Methods", "*");
+        responseHeaders.set("Access-Control-Max-Age", "3600");
+        responseHeaders.set("Access-Control-Allow-Headers", "*");
+        responseHeaders.set("Access-Control-Allow-Credentials", "true");
 
         exchange.sendResponseHeaders(200, responseBodyBytes.length);
         try (OutputStream outputStream = exchange.getResponseBody()) {
