@@ -133,21 +133,7 @@ public class InformationQueryHandler implements HttpHandler {
                             OutputStream outputStream = exchange.getResponseBody()
                     ) {
                         inputStream.transferTo(outputStream);
-//                        byte[] buffer = new byte[1024];
-//                        int read;
-//                        while ((read = inputStream.read(buffer, 0, 1024)) >= 0) {
-//                            getLogger().info("Data: {} byte(s), {}", read, new String(Arrays.copyOfRange(buffer, 0, read)));
-//                            outputStream.write(Arrays.copyOfRange(buffer, 0, read), 0, read);
-//                            outputStream.write(("!".repeat(read).getBytes(StandardCharsets.UTF_8)), 0, read);
-////                            outputStream.write(new String(Arrays.copyOfRange(buffer, 0, read)).getBytes(StandardCharsets.UTF_8));
-//                        }
                     }
-//                    exchange.sendResponseHeaders(200, 3);
-//                    try (
-//                            OutputStream outputStream = exchange.getResponseBody()
-//                    ) {
-//                        outputStream.write("123".getBytes(StandardCharsets.UTF_8));
-//                    }
                     getLogger().info("transformation finished: {}", path);
                 }
                 case ACTION_GET_INFORMATION -> response(exchange, new JsonResponseBody(Storages.readInformation(new File(path))));
