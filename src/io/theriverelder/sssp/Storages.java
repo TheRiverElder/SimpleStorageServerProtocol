@@ -19,14 +19,14 @@ public class Storages {
         if (!item.isDirectory()) throw new IllegalArgumentException(String.format("%s is not a directory", item.getAbsolutePath()));
     }
 
-    public static String[] readChildNames(File directory) throws IllegalArgumentException {
-        checkDirectoryExists(directory);
-        return directory.list();
-    }
-
     public static DirectoryInformationCache readChildrenInformation(File directory) throws IllegalArgumentException {
-        checkDirectoryExists(directory);
-        File[] subItems = directory.listFiles();
+        File[] subItems;
+        if (directory.getPath().isBlank()) {
+            subItems = File.listRoots();
+        } else {
+            checkDirectoryExists(directory);
+            subItems = directory.listFiles();
+        }
         return new DirectoryInformationCache(directory, Arrays.stream(Objects.requireNonNull(subItems))
                 .map(subItem -> new ChildInformationCache(subItem, subItem.isFile(), subItem.isDirectory()))
                 .toList()
@@ -34,6 +34,7 @@ public class Storages {
     }
 
     public static ItemInformationCache readInformation(File item) {
+        if (item.getPath().isBlank()) return new ItemInformationCache(item, true, false, true, 0, -1);
         return new ItemInformationCache(
                 item,
                 item.exists(),
