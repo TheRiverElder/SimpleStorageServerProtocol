@@ -14,7 +14,7 @@ public class SimpleStorageServer {
     private final HttpServer httpServer;
     private boolean disposed = true;
 
-    SimpleStorageServer(int port) throws IOException {
+    public SimpleStorageServer(int port) throws IOException {
         this.httpServer = HttpServer.create(new InetSocketAddress(port), 0);
         this.httpServer.createContext("/", new InformationQueryHandler(this));
         this.httpServer.setExecutor(null);
