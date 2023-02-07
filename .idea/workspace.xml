@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="607474e0-9ed5-461b-aee9-33fd7742ef07" name="变更" comment="">
+      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/common/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/common/src/main/java/io/theriverelder/sssp/Main.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/common/src/main/java/io/theriverelder/sssp/common/JsonSource.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/common/src/main/java/io/theriverelder/sssp/common/SimpleStorageServer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/common/src/main/java/io/theriverelder/sssp/common/StorageHelperAdapter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/common/src/main/java/io/theriverelder/sssp/common/model/ChildInformationCache.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/common/src/main/java/io/theriverelder/sssp/common/model/DirectoryInformationCache.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/common/src/main/java/io/theriverelder/sssp/common/model/ItemInformationCache.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/common/src/main/java/io/theriverelder/sssp/common/model/JsonResponseBody.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/desktop/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/desktop/src/main/java/io/theriverelder/sssp/desktop/DesktopSimpleStorageServer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/desktop/src/main/java/io/theriverelder/sssp/desktop/Main.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/desktop/src/main/java/io/theriverelder/sssp/desktop/Storages.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/desktop/src/main/java/io/theriverelder/sssp/desktop/restful/InformationQueryHandler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="importingSettings">
+      <MavenImportingSettings>
+        <option name="workspaceImportEnabled" value="true" />
+      </MavenImportingSettings>
+    </option>
+  </component>
+  <component name="ProjectId" id="2LQ0jirfWWYg6lX3T9JMxtd47cj" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "Downloaded.Files.Path.Enabled": "false",
+    "Repository.Attach.Annotations": "false",
+    "Repository.Attach.JavaDocs": "false",
+    "Repository.Attach.Sources": "false",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "jdk.selected.JAVA_MODULE": "18",
+    "last_opened_file_path": "E:/Projects/JavaProjects/SimpleStorageServerProtocol/desktop/src/main/java",
+    "project.structure.last.edited": "模块",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.35977012"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\Projects\JavaProjects\SimpleStorageServerProtocol\desktop\src\main\java" />
+      <recent name="E:\Projects\JavaProjects\SimpleStorageServerProtocol\common\src\main\java" />
+    </key>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="应用程序级" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="默认任务">
+      <changelist id="607474e0-9ed5-461b-aee9-33fd7742ef07" name="变更" comment="" />
+      <created>1675788136291</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1675788136291</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+  </component>
+</project>
