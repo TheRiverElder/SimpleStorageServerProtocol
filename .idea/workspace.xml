@@ -4,33 +4,27 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="607474e0-9ed5-461b-aee9-33fd7742ef07" name="变更" comment="">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/common/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/common/src/main/java/io/theriverelder/sssp/Main.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/common/src/main/java/io/theriverelder/sssp/common/JsonSource.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/common/src/main/java/io/theriverelder/sssp/common/SimpleStorageServer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/common/src/main/java/io/theriverelder/sssp/common/StorageHelperAdapter.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/common/src/main/java/io/theriverelder/sssp/common/model/ChildInformationCache.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/common/src/main/java/io/theriverelder/sssp/common/model/DirectoryInformationCache.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/common/src/main/java/io/theriverelder/sssp/common/model/ItemInformationCache.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/common/src/main/java/io/theriverelder/sssp/common/model/JsonResponseBody.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/desktop/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/desktop/src/main/java/io/theriverelder/sssp/desktop/DesktopSimpleStorageServer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/desktop/src/main/java/io/theriverelder/sssp/desktop/Main.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/desktop/src/main/java/io/theriverelder/sssp/desktop/Storages.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/desktop/src/main/java/io/theriverelder/sssp/desktop/restful/InformationQueryHandler.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+    <list default="true" id="607474e0-9ed5-461b-aee9-33fd7742ef07" name="变更" comment="用maven重建项目">
+      <change afterPath="$PROJECT_DIR$/common/src/main/java/io/theriverelder/sssp/common/util/StorageUtils.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/common/src/main/java/io/theriverelder/sssp/common/util/StringUtils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/src/main/java/io/theriverelder/sssp/Main.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/src/main/java/io/theriverelder/sssp/common/SimpleStorageServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/common/src/main/java/io/theriverelder/sssp/common/SimpleStorageServer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/src/main/java/io/theriverelder/sssp/common/StorageHelperAdapter.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/desktop/src/main/java/io/theriverelder/sssp/desktop/DesktopSimpleStorageServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/desktop/src/main/java/io/theriverelder/sssp/desktop/DesktopSimpleStorageServer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/desktop/src/main/java/io/theriverelder/sssp/desktop/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/desktop/src/main/java/io/theriverelder/sssp/desktop/Main.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -85,9 +79,19 @@
       <option name="presentableId" value="Default" />
       <updated>1675788136291</updated>
     </task>
+    <task id="LOCAL-00001" summary="用maven重建项目">
+      <created>1675789365320</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1675789365320</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+    <MESSAGE value="用maven重建项目" />
+    <option name="LAST_COMMIT_MESSAGE" value="用maven重建项目" />
   </component>
 </project>
