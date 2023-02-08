@@ -27,78 +27,10 @@ public class InformationQueryHandler implements HttpHandler {
         return server;
     }
 
+    @Nullable
     public Logger getLogger() {
         return server.getLogger();
     }
-
-    public static Map<String, String> parseUriQuery(@Nullable String query) {
-        Map<String, String> result = new HashMap<>();
-        if (query == null || query.isBlank()) return result;
-
-        for (String pairString : query.split("&")) {
-            String string = pairString.strip();
-            if (string.length() <= 0) continue;
-            int index = string.indexOf('=');
-            if (index < 0) {
-                result.put(string, "");
-            } else {
-                String key = string.substring(0, index);
-                String value = string.substring(index + 1);
-                result.put(key, value);
-            }
-        }
-
-        return result;
-    }
-
-    public static final String QUERY_NAME_PATH = "path";
-    public static final String QUERY_NAME_TARGET = "target";
-    public static final String QUERY_NAME_ACTION = "action";
-
-    // 所有行为都会返回该格式的json { succeeded: boolean; errorMessage?: string, data?: Data } 其中data字段根据action不同而不同
-
-    /**
-     * 获取信息
-     * {
-     * path: string;
-     * exists: boolean;
-     * isFile: boolean;
-     * isDirectory: boolean;
-     * }
-     */
-    public static final String ACTION_GET_INFORMATION = "get-information";
-
-    /**
-     * 获取文件夹的下级项目列表
-     * {
-     * children: Array<
-     * name：string;
-     * isFile: boolean;
-     * isDirectory: boolean;
-     * >;
-     * }
-     */
-    public static final String ACTION_GET_CHILDREN = "get-children";
-    /**
-     * 载入文件
-     */
-    public static final String ACTION_GET = "get";
-    /**
-     * 上传新文件
-     */
-    public static final String ACTION_ADD = "add";
-    /**
-     * 删除文件，直接删除，不进入回收站
-     */
-    public static final String ACTION_DELETE = "delete";
-    /**
-     * 将文件放入回收站（如果支持）
-     */
-    public static final String ACTION_RECYCLE = "recycle";
-    /**
-     * 重命名，移动也用这个
-     */
-    public static final String ACTION_RENAME = "rename";
 
 
     @Override
@@ -146,12 +78,6 @@ public class InformationQueryHandler implements HttpHandler {
         }
 
         exchange.close();
-    }
-
-    protected static String checkAndGetParam(Map<String, String> queryParams, String key) throws Exception {
-        String value = queryParams.get(key);
-        if (value == null || value.isBlank()) throw new Exception("未获取到" + key + "字段");
-        return value;
     }
 
     protected void response(HttpExchange exchange, @NotNull JsonResponseBody jsonResponseBody) throws IOException {

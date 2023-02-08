@@ -11,7 +11,7 @@ import java.net.InetSocketAddress;
 
 public class DesktopSimpleStorageServer implements SimpleStorageServer {
 
-    private Logger logger = LoggerFactory.getLogger(DesktopSimpleStorageServer.class);
+    @Nullable private Logger logger = null;
     private HttpServer httpServer;
     private boolean disposed = true;
 
@@ -51,6 +51,7 @@ public class DesktopSimpleStorageServer implements SimpleStorageServer {
     }
 
     @Override
+    @Nullable
     public Logger getLogger() {
         return logger;
     }
