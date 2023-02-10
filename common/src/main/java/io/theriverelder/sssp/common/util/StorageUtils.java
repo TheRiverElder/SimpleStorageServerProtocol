@@ -10,6 +10,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.Arrays;
 import java.util.Objects;
+import java.util.stream.Collectors;
 
 public class StorageUtils {
     public static void checkExists(File item) throws IllegalArgumentException {
@@ -36,8 +37,7 @@ public class StorageUtils {
         }
         return new DirectoryInformationCache(directory, Arrays.stream(Objects.requireNonNull(subItems))
                 .map(subItem -> new ChildInformationCache(subItem, subItem.isFile(), subItem.isDirectory()))
-                .toList()
-        );
+                .collect(Collectors.toList()));
     }
 
     public static ItemInformationCache readInformation(File item) {
