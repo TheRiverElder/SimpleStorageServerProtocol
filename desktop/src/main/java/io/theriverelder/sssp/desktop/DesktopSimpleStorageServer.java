@@ -1,36 +1,40 @@
 package io.theriverelder.sssp.desktop;
 
 import com.sun.net.httpserver.HttpServer;
-import io.theriverelder.sssp.common.SimpleStorageServer;
-import io.theriverelder.sssp.desktop.restful.InformationQueryHandler;
+import io.theriverelder.sssp.common.HttpResponseHelper;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
 import java.net.InetSocketAddress;
+import java.util.Optional;
 
-public class DesktopSimpleStorageServer implements SimpleStorageServer {
+import static org.slf4j.helpers.NOPLogger.NOP_LOGGER;
 
-    @Nullable private Logger logger = null;
+public class DesktopSimpleStorageServer {
+
+    @Nullable
+    private Logger logger = null;
     private HttpServer httpServer;
     private boolean disposed = true;
 
 
-    @Override
     public void initialize(int port) throws IOException {
         this.httpServer = HttpServer.create(new InetSocketAddress(port), 0);
-        this.httpServer.createContext("/", new InformationQueryHandler(this));
+        this.httpServer.createContext("/", exchange -> {
+            HttpResponseHelper.process(new HttpExchangeResponseSupporter(exchange));
+            exchange.close();
+        });
         this.httpServer.setExecutor(null);
     }
 
-    @Override
     public void start() {
         httpServer.start();
         getLogger().info("Server started at port {}", getPort());
         disposed = true;
     }
 
-    @Override
     public void stop() {
         httpServer.stop(12 * 1000);
         getLogger().info("Server stopped at port {}", getPort());
@@ -45,19 +49,16 @@ public class DesktopSimpleStorageServer implements SimpleStorageServer {
         return httpServer;
     }
 
-    @Override
     public int getPort() {
         return httpServer.getAddress().getPort();
     }
 
-    @Override
-    @Nullable
+    @NotNull
     public Logger getLogger() {
-        return logger;
+        return Optional.ofNullable(logger).orElse(NOP_LOGGER);
     }
 
-    @Override
-    public void setLogger(Logger logger) {
+    public void setLogger(@Nullable Logger logger) {
         this.logger = logger;
     }
 }

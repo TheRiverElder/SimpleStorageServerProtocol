@@ -1,10 +1,14 @@
+package io.theriverelder.sssp.common;
+
+import java.io.IOException;
 import java.io.InputStream;
 import java.net.URI;
 
 public interface ResponseSupporter {
 
-    URI getUri();
-    
+    URI getRequestUri();
+    InputStream getRequestBody();
+
     // 以下方法都将被依次调用
 
     // 此处的header不包括Content-Length
@@ -15,5 +19,5 @@ public interface ResponseSupporter {
     void setResponseBodyLength(long bodyLength);
 
     // 这个最后调用
-    void sendResponseBody(InputStream inputStream);
+    void sendResponseBody(InputStream inputStream) throws IOException;
 }

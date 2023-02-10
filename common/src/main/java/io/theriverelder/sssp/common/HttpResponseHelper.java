@@ -1,9 +1,18 @@
-import java.io.InputStream;
-import java.net.URI;
+package io.theriverelder.sssp.common;
 
-import io.theriverelder.sssp.common.ResponseSupporter;
+import io.theriverelder.sssp.common.model.JsonResponseBody;
 import io.theriverelder.sssp.common.util.StorageUtils;
 import io.theriverelder.sssp.common.util.StringUtils;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
+
+import java.io.*;
+import java.net.URI;
+import java.net.URLConnection;
+import java.nio.charset.StandardCharsets;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Optional;
 
 public class HttpResponseHelper {
     
@@ -85,14 +94,14 @@ public class HttpResponseHelper {
         return value;
     }
 
-    public static process(ResponseSupporter supporter) {
-        URI uri = supporter.getUri();
+    public static void process(ResponseSupporter supporter) throws IOException {
+        URI uri = supporter.getRequestUri();
 
-        Map<String, String> queryParams = parseUriQuery(exchange.getRequestURI().getQuery());
+        Map<String, String> queryParams = parseUriQuery(supporter.getRequestUri().getQuery());
         
         try {
             String path = checkAndGetParam(queryParams, QUERY_NAME_PATH);
-            if (path == null || String.isBlank(path)) {
+            if ("".equals(path)) {
                 path = StringUtils.getPath(uri);
             }
             String action = checkAndGetParam(queryParams, QUERY_NAME_ACTION);
@@ -102,7 +111,13 @@ public class HttpResponseHelper {
                     File file = new File(path);
                     StorageUtils.checkExists(file);
 
-                    supporter.setResponseHeader("Content-Type", "plain/text; charset=utf-8");
+//                    Files.probeContentType(file.toPath());
+                    String contentType = Optional.ofNullable(URLConnection.guessContentTypeFromName(file.getName())).orElse("text/plain");
+                    if (contentType.startsWith("text/")) {
+                        contentType += "; charset=utf-8";
+                    }
+
+                    supporter.setResponseHeader("Content-Type", contentType);
                     setTheFuckingCorsHeaders(supporter);
 
                     supporter.setResponseStatus(200);
@@ -111,14 +126,14 @@ public class HttpResponseHelper {
                     try (InputStream inputStream = new FileInputStream(file)) {
                         supporter.sendResponseBody(inputStream);
                     }
-                    // getLogger().info("transformation finished: {}", path);
+//                     getLogger().info("transformation finished: {}", path);
                 }
-                case ACTION_GET_INFORMATION -> response(supporter, new JsonResponseBody(Storages.readInformation(new File(path))));
-                case ACTION_GET_CHILDREN -> response(supporter, new JsonResponseBody(Storages.readChildrenInformation(new File(path))));
-                case ACTION_ADD -> response(supporter, new JsonResponseBody(Storages.add(new File(path), exchange.getRequestBody())));
-                case ACTION_DELETE -> response(supporter, new JsonResponseBody(Storages.delete(new File(path))));
+                case ACTION_GET_INFORMATION -> response(supporter, new JsonResponseBody(StorageUtils.readInformation(new File(path))));
+                case ACTION_GET_CHILDREN -> response(supporter, new JsonResponseBody(StorageUtils.readChildrenInformation(new File(path))));
+                case ACTION_ADD -> response(supporter, new JsonResponseBody(StorageUtils.add(new File(path), supporter.getRequestBody())));
+                case ACTION_DELETE -> response(supporter, new JsonResponseBody(StorageUtils.delete(new File(path))));
                 case ACTION_RECYCLE -> response(supporter, new JsonResponseBody("暂不支持操作：回收：" + path));
-                case ACTION_RENAME -> response(supporter, new JsonResponseBody(Storages.rename(new File(path), new File(checkAndGetParam(queryParams, QUERY_NAME_TARGET)))));
+                case ACTION_RENAME -> response(supporter, new JsonResponseBody(StorageUtils.rename(new File(path), new File(checkAndGetParam(queryParams, QUERY_NAME_TARGET)))));
                 default -> response(supporter, new JsonResponseBody("未知行为：" + action));
             }
         } catch (Exception e) {
@@ -132,7 +147,7 @@ public class HttpResponseHelper {
         byte[] responseBodyBytes = responseBodyString.getBytes(StandardCharsets.UTF_8);
 
         supporter.setResponseHeader("Content-Type", "application/json; charset=utf-8");
-        setTheFuckingCorsHeaders(responseHeaders);
+        setTheFuckingCorsHeaders(supporter);
 
         supporter.setResponseStatus(200);
         supporter.setResponseBodyLength(responseBodyBytes.length);

@@ -1,7 +1,7 @@
 package io.theriverelder.sssp.common.model;
 
 import com.alibaba.fastjson2.JSONObject;
-import io.theriverelder.sssp.common.JsonSource;
+import io.theriverelder.sssp.common.util.JsonSource;
 
 import java.io.File;
 import java.util.List;

@@ -11,14 +11,19 @@ import java.io.InputStream;
 import java.util.Arrays;
 import java.util.Objects;
 
-public interface StorageUtils {
+public class StorageUtils {
     public static void checkExists(File item) throws IllegalArgumentException {
-        if (!item.exists()) throw new IllegalArgumentException(String.format("%s does not exist", item.getAbsolutePath()));
+        if (!item.exists()) throw new IllegalArgumentException("Path does not exist: " + item.getAbsolutePath());
+    }
+
+    public static void checkFileExists(File item) throws IllegalArgumentException {
+        checkExists(item);
+        if (!item.isFile()) throw new IllegalArgumentException("Path is not a file: " + item.getAbsolutePath());
     }
 
     public static void checkDirectoryExists(File item) throws IllegalArgumentException {
         checkExists(item);
-        if (!item.isDirectory()) throw new IllegalArgumentException(String.format("%s is not a directory", item.getAbsolutePath()));
+        if (!item.isDirectory()) throw new IllegalArgumentException("Path is not a directory: " + item.getAbsolutePath());
     }
 
     public static DirectoryInformationCache readChildrenInformation(File directory) throws IllegalArgumentException {
