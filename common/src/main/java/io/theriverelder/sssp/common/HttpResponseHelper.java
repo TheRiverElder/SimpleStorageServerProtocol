@@ -2,7 +2,6 @@ package io.theriverelder.sssp.common;
 
 import io.theriverelder.sssp.common.model.JsonResponseBody;
 import io.theriverelder.sssp.common.util.StorageUtils;
-import io.theriverelder.sssp.common.util.StringUtils;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -97,14 +96,14 @@ public class HttpResponseHelper {
     public static void process(ResponseSupporter supporter) throws IOException {
         URI uri = supporter.getRequestUri();
 
-        Map<String, String> queryParams = parseUriQuery(supporter.getRequestUri().getQuery());
+        Map<String, String> queryParams = parseUriQuery(uri.getQuery());
         
         try {
 //            String path = checkAndGetParam(queryParams, QUERY_NAME_PATH);
 //            if ("".equals(path)) {
 //                path = StringUtils.getPath(uri);
 //            }
-            String path = StringUtils.getPath(uri);
+            String path = checkAndGetParam(queryParams, QUERY_NAME_PATH);
             String action = checkAndGetParam(queryParams, QUERY_NAME_ACTION);
 
             switch (action) {
