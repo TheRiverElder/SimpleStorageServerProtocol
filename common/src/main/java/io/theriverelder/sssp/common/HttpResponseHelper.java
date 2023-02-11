@@ -100,10 +100,11 @@ public class HttpResponseHelper {
         Map<String, String> queryParams = parseUriQuery(supporter.getRequestUri().getQuery());
         
         try {
-            String path = checkAndGetParam(queryParams, QUERY_NAME_PATH);
-            if ("".equals(path)) {
-                path = StringUtils.getPath(uri);
-            }
+//            String path = checkAndGetParam(queryParams, QUERY_NAME_PATH);
+//            if ("".equals(path)) {
+//                path = StringUtils.getPath(uri);
+//            }
+            String path = StringUtils.getPath(uri);
             String action = checkAndGetParam(queryParams, QUERY_NAME_ACTION);
 
             switch (action) {
