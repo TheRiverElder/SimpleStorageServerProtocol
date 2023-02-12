@@ -53,8 +53,6 @@ public class HttpExchangeResponseSupporter implements ResponseSupporter {
             while ((read = inputStream.read(buffer, 0, 8192)) >= 0) {
                 outputStream.write(buffer, 0, read);
             }
-        } finally {
-            inputStream.close();
         }
         return true;
     }
