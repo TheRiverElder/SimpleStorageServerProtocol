@@ -47,8 +47,14 @@ public class HttpExchangeResponseSupporter implements ResponseSupporter {
     @Override
     public boolean sendResponseBody(InputStream inputStream) throws IOException {
         exchange.sendResponseHeaders(responseStatusCode, responseContentLength);
-        try (inputStream; OutputStream outputStream = exchange.getResponseBody()) {
-            inputStream.transferTo(outputStream);
+        try (OutputStream outputStream = exchange.getResponseBody()) {
+            byte[] buffer = new byte[8192];
+            int read;
+            while ((read = inputStream.read(buffer, 0, 8192)) >= 0) {
+                outputStream.write(buffer, 0, read);
+            }
+        } finally {
+            inputStream.close();
         }
         return true;
     }

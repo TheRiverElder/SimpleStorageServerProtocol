@@ -29,7 +29,7 @@ public class StorageUtils {
 
     public static DirectoryInformationCache readChildrenInformation(File directory) throws IllegalArgumentException {
         File[] subItems;
-        if (directory.getPath().isBlank()) {
+        if ("".equals(directory.getPath())) {
             subItems = File.listRoots();
         } else {
             checkDirectoryExists(directory);
@@ -41,7 +41,7 @@ public class StorageUtils {
     }
 
     public static ItemInformationCache readInformation(File item) {
-        if (item.getPath().isBlank()) return new ItemInformationCache(item, true, false, true, 0, -1);
+        if ("".equals(item.getPath())) return new ItemInformationCache(item, true, false, true, 0, -1);
         return new ItemInformationCache(
                 item,
                 item.exists(),
@@ -74,8 +74,14 @@ public class StorageUtils {
             if (!parent.isDirectory()) throw new IllegalArgumentException("Is not a directory: " + parent.getAbsolutePath());
         }
 
-        try (inputStream; FileOutputStream fileOutputStream = new FileOutputStream(file)) {
-            inputStream.transferTo(fileOutputStream);
+        try (FileOutputStream fileOutputStream = new FileOutputStream(file)) {
+            byte[] buffer = new byte[8192];
+            int read;
+            while ((read = inputStream.read(buffer, 0, 8192)) >= 0) {
+                fileOutputStream.write(buffer, 0, read);
+            }
+        } finally {
+            inputStream.close();
         }
         return true;
     }

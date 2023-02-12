@@ -9,6 +9,7 @@ import java.io.*;
 import java.net.URI;
 import java.net.URLConnection;
 import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
@@ -18,11 +19,11 @@ public class HttpResponseHelper {
 
     public static Map<String, String> parseUriQuery(@Nullable String query) {
         Map<String, String> result = new HashMap<>();
-        if (query == null || query.isBlank()) return result;
+        if (query == null || "".equals(query)) return result;
 
         for (String pairString : query.split("&")) {
-            String string = pairString.strip();
-            if (string.length() <= 0) continue;
+            String string = pairString.trim();
+            if (string.length() == 0) continue;
             int index = string.indexOf('=');
             if (index < 0) {
                 result.put(string, "");
@@ -89,7 +90,7 @@ public class HttpResponseHelper {
 
     protected static String checkAndGetParam(Map<String, String> queryParams, String key) throws Exception {
         String value = queryParams.get(key);
-        if (value == null || value.isBlank()) throw new Exception("未获取到" + key + "字段");
+        if (value == null || "".equals(value)) throw new Exception("未获取到" + key + "字段");
         return value;
     }
 
@@ -107,7 +108,7 @@ public class HttpResponseHelper {
             String action = checkAndGetParam(queryParams, QUERY_NAME_ACTION);
 
             switch (action) {
-                case ACTION_GET -> {
+                case ACTION_GET: {
                     File file = new File(path);
                     StorageUtils.checkExists(file);
 
@@ -123,19 +124,20 @@ public class HttpResponseHelper {
                     supporter.setResponseStatus(200);
                     supporter.setResponseBodyLength(file.length());
 
-                    InputStream inputStream = new FileInputStream(file);
+                    InputStream inputStream = Files.newInputStream(file.toPath());
                     if (supporter.sendResponseBody(inputStream)) {
                         inputStream.close();
                     }
 //                     getLogger().info("transformation finished: {}", path);
+                    break;
                 }
-                case ACTION_GET_INFORMATION -> response(supporter, new JsonResponseBody(StorageUtils.readInformation(new File(path))));
-                case ACTION_GET_CHILDREN -> response(supporter, new JsonResponseBody(StorageUtils.readChildrenInformation(new File(path))));
-                case ACTION_ADD -> response(supporter, new JsonResponseBody(StorageUtils.add(new File(path), supporter.getRequestBody())));
-                case ACTION_DELETE -> response(supporter, new JsonResponseBody(StorageUtils.delete(new File(path))));
-                case ACTION_RECYCLE -> response(supporter, new JsonResponseBody("暂不支持操作：回收：" + path));
-                case ACTION_RENAME -> response(supporter, new JsonResponseBody(StorageUtils.rename(new File(path), new File(checkAndGetParam(queryParams, QUERY_NAME_TARGET)))));
-                default -> response(supporter, new JsonResponseBody("未知行为：" + action));
+                case ACTION_GET_INFORMATION: response(supporter, new JsonResponseBody(StorageUtils.readInformation(new File(path)))); break;
+                case ACTION_GET_CHILDREN: response(supporter, new JsonResponseBody(StorageUtils.readChildrenInformation(new File(path)))); break;
+                case ACTION_ADD: response(supporter, new JsonResponseBody(StorageUtils.add(new File(path), supporter.getRequestBody()))); break;
+                case ACTION_DELETE: response(supporter, new JsonResponseBody(StorageUtils.delete(new File(path)))); break;
+                case ACTION_RECYCLE: response(supporter, new JsonResponseBody("暂不支持操作：回收：" + path)); break;
+                case ACTION_RENAME: response(supporter, new JsonResponseBody(StorageUtils.rename(new File(path), new File(checkAndGetParam(queryParams, QUERY_NAME_TARGET))))); break;
+                default: response(supporter, new JsonResponseBody("未知行为：" + action)); break;
             }
         } catch (Exception e) {
             response(supporter, new JsonResponseBody(e.getMessage()));

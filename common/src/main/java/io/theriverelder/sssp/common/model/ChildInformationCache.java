@@ -47,7 +47,7 @@ public final class ChildInformationCache implements JsonSource {
     public boolean equals(Object obj) {
         if (obj == this) return true;
         if (obj == null || obj.getClass() != this.getClass()) return false;
-        var that = (ChildInformationCache) obj;
+        ChildInformationCache that = (ChildInformationCache) obj;
         return Objects.equals(this.item, that.item) &&
                 this.isFile == that.isFile &&
                 this.idDirectory == that.idDirectory;

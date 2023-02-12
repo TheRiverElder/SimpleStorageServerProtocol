@@ -71,7 +71,7 @@ public final class ItemInformationCache implements JsonSource {
     public boolean equals(Object obj) {
         if (obj == this) return true;
         if (obj == null || obj.getClass() != this.getClass()) return false;
-        var that = (ItemInformationCache) obj;
+        ItemInformationCache that = (ItemInformationCache) obj;
         return Objects.equals(this.item, that.item) &&
                 this.exists == that.exists &&
                 this.isFile == that.isFile &&

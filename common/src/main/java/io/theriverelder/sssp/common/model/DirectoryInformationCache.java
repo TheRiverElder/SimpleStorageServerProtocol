@@ -41,7 +41,7 @@ public final class DirectoryInformationCache implements JsonSource {
     public boolean equals(Object obj) {
         if (obj == this) return true;
         if (obj == null || obj.getClass() != this.getClass()) return false;
-        var that = (DirectoryInformationCache) obj;
+        DirectoryInformationCache that = (DirectoryInformationCache) obj;
         return Objects.equals(this.directory, that.directory) &&
                 Objects.equals(this.children, that.children);
     }
