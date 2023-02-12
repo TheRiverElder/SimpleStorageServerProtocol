@@ -4,13 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="607474e0-9ed5-461b-aee9-33fd7742ef07" name="变更" comment="支持package添加源码">
+    <list default="true" id="607474e0-9ed5-461b-aee9-33fd7742ef07" name="变更" comment="允许Supporter自行关闭ResponseBody这个InputStream">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/common/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/common/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/common/src/main/java/io/theriverelder/sssp/common/HttpResponseHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/common/src/main/java/io/theriverelder/sssp/common/HttpResponseHelper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/common/src/main/java/io/theriverelder/sssp/common/ResponseSupporter.java" beforeDir="false" afterPath="$PROJECT_DIR$/common/src/main/java/io/theriverelder/sssp/common/ResponseSupporter.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/desktop/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/desktop/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/src/main/java/io/theriverelder/sssp/desktop/HttpExchangeResponseSupporter.java" beforeDir="false" afterPath="$PROJECT_DIR$/desktop/src/main/java/io/theriverelder/sssp/desktop/HttpExchangeResponseSupporter.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -32,6 +29,11 @@
     <option name="stateVersion" value="1" />
   </component>
   <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="alwaysUpdateSnapshots" value="true" />
+      </MavenGeneralSettings>
+    </option>
     <option name="importingSettings">
       <MavenImportingSettings>
         <option name="workspaceImportEnabled" value="true" />
@@ -46,23 +48,24 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
-    &quot;Downloaded.Files.Path.Enabled&quot;: &quot;false&quot;,
-    &quot;Repository.Attach.Annotations&quot;: &quot;false&quot;,
-    &quot;Repository.Attach.JavaDocs&quot;: &quot;false&quot;,
-    &quot;Repository.Attach.Sources&quot;: &quot;false&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;jdk.selected.JAVA_MODULE&quot;: &quot;18&quot;,
-    &quot;last_opened_file_path&quot;: &quot;E:/Projects/JavaProjects/SimpleStorageServerProtocol/desktop/src/main/java&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;模块&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.35977012&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "Downloaded.Files.Path.Enabled": "false",
+    "Repository.Attach.Annotations": "false",
+    "Repository.Attach.JavaDocs": "false",
+    "Repository.Attach.Sources": "false",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "jdk.selected.JAVA_MODULE": "18",
+    "last_opened_file_path": "E:/Projects/JavaProjects/SimpleStorageServerProtocol/desktop/src/main/java",
+    "project.structure.last.edited": "模块",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.35977012",
+    "settings.editor.selected.configurable": "reference.settings.project.maven.runner"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="E:\Projects\JavaProjects\SimpleStorageServerProtocol\desktop\src\main\java" />
@@ -154,7 +157,14 @@
       <option name="project" value="LOCAL" />
       <updated>1676092167580</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="允许Supporter自行关闭ResponseBody这个InputStream">
+      <created>1676205901298</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1676205901298</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -166,7 +176,8 @@
     <MESSAGE value="降级JDK到14" />
     <MESSAGE value="暂时屏蔽从URL.path获取资源path" />
     <MESSAGE value="支持package添加源码" />
-    <option name="LAST_COMMIT_MESSAGE" value="支持package添加源码" />
+    <MESSAGE value="允许Supporter自行关闭ResponseBody这个InputStream" />
+    <option name="LAST_COMMIT_MESSAGE" value="允许Supporter自行关闭ResponseBody这个InputStream" />
   </component>
   <component name="XDebuggerManager">
     <pin-to-top-manager>

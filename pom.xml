@@ -4,8 +4,8 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>io.theriverelder</groupId>
-    <artifactId>SimpleStorageServerProtocol</artifactId>
+    <groupId>io.theriverelder.sssp</groupId>
+    <artifactId>simple-storage-server-protocol</artifactId>
     <version>1.0</version>
     <packaging>pom</packaging>
     <modules>
