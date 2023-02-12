@@ -4,9 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="607474e0-9ed5-461b-aee9-33fd7742ef07" name="变更" comment="为desktop添加mainClass">
+    <list default="true" id="607474e0-9ed5-461b-aee9-33fd7742ef07" name="变更" comment="为desktop添加logger">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/src/main/java/io/theriverelder/sssp/desktop/DesktopSimpleStorageServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/desktop/src/main/java/io/theriverelder/sssp/desktop/DesktopSimpleStorageServer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/desktop/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/desktop/pom.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -176,7 +176,14 @@
       <option name="project" value="LOCAL" />
       <updated>1676211560725</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="为desktop添加logger">
+      <created>1676212061763</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1676212061763</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -191,7 +198,8 @@
     <MESSAGE value="允许Supporter自行关闭ResponseBody这个InputStream" />
     <MESSAGE value="成功打包desktop" />
     <MESSAGE value="为desktop添加mainClass" />
-    <option name="LAST_COMMIT_MESSAGE" value="为desktop添加mainClass" />
+    <MESSAGE value="为desktop添加logger" />
+    <option name="LAST_COMMIT_MESSAGE" value="为desktop添加logger" />
   </component>
   <component name="XDebuggerManager">
     <pin-to-top-manager>
