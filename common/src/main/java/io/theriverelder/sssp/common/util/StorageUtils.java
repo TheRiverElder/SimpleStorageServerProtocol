@@ -67,6 +67,7 @@ public class StorageUtils {
             if (!file.isFile()) throw new IllegalArgumentException("Is not a file: " + file.getAbsolutePath());
         } else {
             File parent = file.getParentFile();
+            if (parent == null) throw new IllegalArgumentException("No parent directory: " + file.getAbsolutePath());
             if (!parent.exists()) {
                 if (parent.mkdirs()) throw new IllegalArgumentException("Cannot create parent directory: " + parent.getAbsolutePath());
             }
