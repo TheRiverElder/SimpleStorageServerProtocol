@@ -123,8 +123,9 @@ public class HttpResponseHelper {
                     supporter.setResponseStatus(200);
                     supporter.setResponseBodyLength(file.length());
 
-                    try (InputStream inputStream = new FileInputStream(file)) {
-                        supporter.sendResponseBody(inputStream);
+                    InputStream inputStream = new FileInputStream(file);
+                    if (supporter.sendResponseBody(inputStream)) {
+                        inputStream.close();
                     }
 //                     getLogger().info("transformation finished: {}", path);
                 }

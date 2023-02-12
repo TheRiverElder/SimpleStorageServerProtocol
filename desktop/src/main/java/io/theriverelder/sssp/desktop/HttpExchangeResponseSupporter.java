@@ -45,10 +45,11 @@ public class HttpExchangeResponseSupporter implements ResponseSupporter {
     }
 
     @Override
-    public void sendResponseBody(InputStream inputStream) throws IOException {
+    public boolean sendResponseBody(InputStream inputStream) throws IOException {
         exchange.sendResponseHeaders(responseStatusCode, responseContentLength);
         try (inputStream; OutputStream outputStream = exchange.getResponseBody()) {
             inputStream.transferTo(outputStream);
         }
+        return true;
     }
 }

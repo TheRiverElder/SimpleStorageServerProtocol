@@ -19,5 +19,7 @@ public interface ResponseSupporter {
     void setResponseBodyLength(long bodyLength);
 
     // 这个最后调用
-    void sendResponseBody(InputStream inputStream) throws IOException;
+    // 返回true表示可用由HttpResponseHelper.process()关闭inputStream
+    // 返回false表示不要关闭，但是请ResponseSupporter务必在后续过程中自己关闭inputStream！
+    boolean sendResponseBody(InputStream inputStream) throws IOException;
 }

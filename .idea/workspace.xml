@@ -8,6 +8,10 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/common/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/common/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/common/src/main/java/io/theriverelder/sssp/common/HttpResponseHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/common/src/main/java/io/theriverelder/sssp/common/HttpResponseHelper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/src/main/java/io/theriverelder/sssp/common/ResponseSupporter.java" beforeDir="false" afterPath="$PROJECT_DIR$/common/src/main/java/io/theriverelder/sssp/common/ResponseSupporter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/desktop/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/desktop/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/desktop/src/main/java/io/theriverelder/sssp/desktop/HttpExchangeResponseSupporter.java" beforeDir="false" afterPath="$PROJECT_DIR$/desktop/src/main/java/io/theriverelder/sssp/desktop/HttpExchangeResponseSupporter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -54,7 +58,7 @@
     &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
     &quot;jdk.selected.JAVA_MODULE&quot;: &quot;18&quot;,
     &quot;last_opened_file_path&quot;: &quot;E:/Projects/JavaProjects/SimpleStorageServerProtocol/desktop/src/main/java&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;工件&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;模块&quot;,
     &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
     &quot;project.structure.side.proportion&quot;: &quot;0.35977012&quot;
   }
@@ -143,7 +147,14 @@
       <option name="project" value="LOCAL" />
       <updated>1676091493357</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="支持package添加源码">
+      <created>1676092167580</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1676092167580</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">

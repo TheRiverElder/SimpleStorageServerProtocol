@@ -6,7 +6,7 @@
     <parent>
         <groupId>io.theriverelder</groupId>
         <artifactId>SimpleStorageServerProtocol</artifactId>
-        <version>1.0-SNAPSHOT</version>
+        <version>1.0</version>
     </parent>
 
     <groupId>io.theriverelder.sssp</groupId>
