@@ -5,6 +5,7 @@ import io.theriverelder.sssp.common.HttpResponseHelper;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
 import java.net.InetSocketAddress;
@@ -15,7 +16,7 @@ import static org.slf4j.helpers.NOPLogger.NOP_LOGGER;
 public class DesktopSimpleStorageServer {
 
     @Nullable
-    private Logger logger = null;
+    private Logger logger = LoggerFactory.getLogger(this.getClass().getSimpleName());
     private HttpServer httpServer;
     private boolean disposed = true;
 
@@ -23,8 +24,10 @@ public class DesktopSimpleStorageServer {
     public void initialize(int port) throws IOException {
         this.httpServer = HttpServer.create(new InetSocketAddress(port), 0);
         this.httpServer.createContext("/", exchange -> {
+            getLogger().info("+++++++ Connection IN: {}", exchange.getRemoteAddress().toString());
             HttpResponseHelper.process(new HttpExchangeResponseSupporter(exchange));
             exchange.close();
+            getLogger().info("------- Connection OUT: {}", exchange.getRemoteAddress().toString());
         });
         this.httpServer.setExecutor(null);
     }

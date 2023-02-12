@@ -4,8 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="607474e0-9ed5-461b-aee9-33fd7742ef07" name="变更" comment="成功打包desktop">
-      <change beforePath="$PROJECT_DIR$/desktop/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/desktop/pom.xml" afterDir="false" />
+    <list default="true" id="607474e0-9ed5-461b-aee9-33fd7742ef07" name="变更" comment="为desktop添加mainClass">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/desktop/src/main/java/io/theriverelder/sssp/desktop/DesktopSimpleStorageServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/desktop/src/main/java/io/theriverelder/sssp/desktop/DesktopSimpleStorageServer.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -168,7 +169,14 @@
       <option name="project" value="LOCAL" />
       <updated>1676211314965</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="为desktop添加mainClass">
+      <created>1676211560725</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1676211560725</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -182,7 +190,8 @@
     <MESSAGE value="支持package添加源码" />
     <MESSAGE value="允许Supporter自行关闭ResponseBody这个InputStream" />
     <MESSAGE value="成功打包desktop" />
-    <option name="LAST_COMMIT_MESSAGE" value="成功打包desktop" />
+    <MESSAGE value="为desktop添加mainClass" />
+    <option name="LAST_COMMIT_MESSAGE" value="为desktop添加mainClass" />
   </component>
   <component name="XDebuggerManager">
     <pin-to-top-manager>
