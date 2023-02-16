@@ -30,6 +30,11 @@ public class HttpExchangeResponseSupporter implements ResponseSupporter {
     }
 
     @Override
+    public long getRequestBodyLength() {
+        return -1L;
+    }
+
+    @Override
     public void setResponseHeader(String name, String value) {
         exchange.getResponseHeaders().set(name, value);
     }

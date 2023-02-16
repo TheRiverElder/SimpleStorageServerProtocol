@@ -133,7 +133,7 @@ public class HttpResponseHelper {
                 }
                 case ACTION_GET_INFORMATION: response(supporter, new JsonResponseBody(StorageUtils.readInformation(new File(path)))); break;
                 case ACTION_GET_CHILDREN: response(supporter, new JsonResponseBody(StorageUtils.readChildrenInformation(new File(path)))); break;
-                case ACTION_ADD: response(supporter, new JsonResponseBody(StorageUtils.add(new File(path), supporter.getRequestBody()))); break;
+                case ACTION_ADD: response(supporter, new JsonResponseBody(StorageUtils.add(new File(path), supporter.getRequestBody(), supporter.getRequestBodyLength()))); break;
                 case ACTION_DELETE: response(supporter, new JsonResponseBody(StorageUtils.delete(new File(path)))); break;
                 case ACTION_RECYCLE: response(supporter, new JsonResponseBody("暂不支持操作：回收：" + path)); break;
                 case ACTION_RENAME: response(supporter, new JsonResponseBody(StorageUtils.rename(new File(path), new File(checkAndGetParam(queryParams, QUERY_NAME_TARGET))))); break;

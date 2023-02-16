@@ -11,6 +11,9 @@ public interface ResponseSupporter {
     // 这个InputStream不再自动关闭，请手动关闭
     InputStream getRequestBody();
 
+    // 返回-1代表RequestBody能读多少，算多少
+    long getRequestBodyLength();
+
     // 以下方法都将被依次调用
 
     // 此处的header不包括Content-Length

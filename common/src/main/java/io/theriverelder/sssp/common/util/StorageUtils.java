@@ -62,7 +62,7 @@ public class StorageUtils {
         return item.delete();
     }
 
-    public static boolean add(File file, InputStream inputStream) throws IllegalArgumentException, IOException {
+    public static boolean add(File file, InputStream inputStream, long inputLength) throws IllegalArgumentException, IOException {
         if (file.exists()) {
             if (!file.isFile()) throw new IllegalArgumentException("Is not a file: " + file.getAbsolutePath());
         } else {
@@ -76,9 +76,9 @@ public class StorageUtils {
 
         try (FileOutputStream fileOutputStream = new FileOutputStream(file)) {
             byte[] buffer = new byte[8192];
-            int read;
-            while ((read = inputStream.read(buffer, 0, 8192)) >= 0) {
-                fileOutputStream.write(buffer, 0, read);
+            int counter = 0;
+            while ((inputLength >= 0 && counter < inputLength) && (counter = inputStream.read(buffer, 0, buffer.length)) >= 0) {
+                fileOutputStream.write(buffer, 0, counter);
             }
         }
         return true;
