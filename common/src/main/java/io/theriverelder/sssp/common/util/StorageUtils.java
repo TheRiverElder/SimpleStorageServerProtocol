@@ -80,8 +80,6 @@ public class StorageUtils {
             while ((read = inputStream.read(buffer, 0, 8192)) >= 0) {
                 fileOutputStream.write(buffer, 0, read);
             }
-        } finally {
-            inputStream.close();
         }
         return true;
     }

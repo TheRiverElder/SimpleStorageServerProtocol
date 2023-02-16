@@ -7,6 +7,8 @@ import java.net.URI;
 public interface ResponseSupporter {
 
     URI getRequestUri();
+
+    // 这个InputStream不再自动关闭，请手动关闭
     InputStream getRequestBody();
 
     // 以下方法都将被依次调用
