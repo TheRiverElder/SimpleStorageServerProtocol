@@ -95,10 +95,27 @@ public class HttpResponseHelper {
     }
 
     public static void process(ResponseSupporter supporter) throws IOException {
+        try {
+            supporter.schedule(new Runnable() {
+                @Override
+                public void run() {
+                    try {
+                        doProcess(supporter);
+                    } catch (IOException e) {
+                        throw new RuntimeException(e);
+                    }
+                }
+            });
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    protected static void doProcess(ResponseSupporter supporter) throws IOException {
         URI uri = supporter.getRequestUri();
 
         Map<String, String> queryParams = parseUriQuery(uri.getQuery());
-        
+
         try {
 //            String path = checkAndGetParam(queryParams, QUERY_NAME_PATH);
 //            if ("".equals(path)) {

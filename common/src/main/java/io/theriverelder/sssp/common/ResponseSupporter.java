@@ -6,6 +6,11 @@ import java.net.URI;
 
 public interface ResponseSupporter {
 
+    // 让实现自己选择处理任务的方式
+    // 例如有的实现使用的框架无法处理多并发，需要给每个请求分配独立的线程，或使用线程池
+    // 而有的实现使用的框架自带并发，无序自己设置线程池，直接运行即可
+    void schedule(Runnable runnable) throws Exception;
+
     URI getRequestUri();
 
     // 这个InputStream不再自动关闭，请手动关闭

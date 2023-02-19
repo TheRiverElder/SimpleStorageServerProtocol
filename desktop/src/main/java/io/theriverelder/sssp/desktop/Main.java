@@ -12,6 +12,7 @@ public class Main {
                 port = Integer.parseInt(portString);
             }
         }
+
         DesktopSimpleStorageServer server = new DesktopSimpleStorageServer();
         server.initialize(port);
         server.start();

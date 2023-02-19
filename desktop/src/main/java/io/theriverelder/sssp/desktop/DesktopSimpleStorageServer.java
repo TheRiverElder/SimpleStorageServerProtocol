@@ -10,6 +10,8 @@ import org.slf4j.LoggerFactory;
 import java.io.IOException;
 import java.net.InetSocketAddress;
 import java.util.Optional;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 import static org.slf4j.helpers.NOPLogger.NOP_LOGGER;
 
@@ -20,17 +22,25 @@ public class DesktopSimpleStorageServer {
     private HttpServer httpServer;
     private boolean disposed = true;
 
+//    private ExecutorService executorService;
+
 
     public void initialize(int port) throws IOException {
+//        this.executorService = Executors.newFixedThreadPool(16);
+
         this.httpServer = HttpServer.create(new InetSocketAddress(port), 0);
         this.httpServer.createContext("/", exchange -> {
             getLogger().info("+++++++ Connection IN: {}", exchange.getRemoteAddress().toString());
-            HttpResponseHelper.process(new HttpExchangeResponseSupporter(exchange));
+            HttpResponseHelper.process(new HttpExchangeResponseSupporter(this, exchange));
             exchange.close();
             getLogger().info("------- Connection OUT: {}", exchange.getRemoteAddress().toString());
         });
         this.httpServer.setExecutor(null);
     }
+//
+//    public ExecutorService getExecutorService() {
+//        return executorService;
+//    }
 
     public void start() {
         httpServer.start();
